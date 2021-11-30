@@ -1,0 +1,66 @@
+.post-wrapper {
+  margin-bottom: 20px;
+  padding-left: 20px;
+
+  .post-container {
+    .post-author-container {
+      justify-content: space-between;
+
+      .author-info-container {
+        .avatar-md {
+          margin-right: 5px;
+        }
+      }
+    }
+
+    .likes-container {
+      justify-content: center;
+      margin-right: 20px;
+      width: 35px;
+      height: 25px;
+      border: 1px solid black;
+      border-radius: 3px;
+
+      .likes-indicator {
+        margin-left: 2px;
+        font-size: 18px;
+      }
+    }
+
+    .liked {
+      background: #537cff;
+      color: white;
+
+      img {
+        filter: invert(1);
+      }
+    }
+
+    .post-info-container {
+      display: flex;
+      flex-direction: column;
+
+      .post-title {
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .post-text {
+        font-size: 16px;
+        height: 20px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+      .opened-text {
+        height: 100%;
+        text-overflow: initial;
+      }
+
+      .post-btn {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
