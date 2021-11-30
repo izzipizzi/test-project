@@ -1,0 +1,24 @@
+.header-wrapper {
+  height: var(--header-height);
+  padding: 20px 40px;
+  box-sizing: border-box;
+
+  .header-container {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 70% 30%;
+
+    .header {
+      .header-item-wrapper:not(:last-child) {
+        margin-right: 10px;
+      }
+
+      .header-item-wrapper {
+        cursor: pointer;
+        height: 20px;
+        display: flex;
+        flex-direction: row;
+      }
+    }
+  }
+}

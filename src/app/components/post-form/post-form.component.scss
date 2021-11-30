@@ -1,0 +1,49 @@
+.add-post-form-wrapper {
+  height: 100%;
+  width: 500px;
+
+  .add-post-form {
+    width: 100%;
+    height: 100%;
+
+    .form-item {
+      min-height: 80px;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      .input-label {
+        font-size: 20px;
+      }
+
+      .item-input {
+        margin-top: 5px;
+        border-radius: 5px;
+        padding: 6px 8px;
+
+        &.ng-dirty.ng-touched.ng-invalid:not(:focus) {
+          border: 2px solid red;
+        }
+      }
+
+      .error-msg {
+        color: red;
+      }
+
+      &.textarea-item {
+        .textarea-input {
+          height: 200px;
+          resize: none;
+        }
+      }
+    }
+
+    .form-btn {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+    }
+
+  }
+}
