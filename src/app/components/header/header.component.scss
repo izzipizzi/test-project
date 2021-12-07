@@ -1,6 +1,6 @@
 .header-wrapper {
   height: var(--header-height);
-  padding: 20px 40px;
+  padding: 10px 40px;
   box-sizing: border-box;
 
   .header-container {
@@ -8,16 +8,26 @@
     grid-template-rows: 1fr;
     grid-template-columns: 70% 30%;
 
+    .header-title {
+      display: flex;
+      align-items: center;
+    }
+
     .header {
+      padding: 0;
+
       .header-item-wrapper:not(:last-child) {
         margin-right: 10px;
       }
 
       .header-item-wrapper {
         cursor: pointer;
-        height: 20px;
         display: flex;
         flex-direction: row;
+
+        .note-icon {
+          filter: invert(1);
+        }
       }
     }
   }

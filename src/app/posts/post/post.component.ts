@@ -32,7 +32,7 @@ export class PostComponent implements OnInit {
 
   get postLikes(): string {
     if (this.post?.likes) {
-      return this.post?.likes > 0 ? 'liked' : '';
+      return this.post?.likes > 0 ? 'warn' : '';
     }
     return ''
   }
