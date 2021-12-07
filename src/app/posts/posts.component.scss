@@ -6,6 +6,13 @@
 
   .posts-container {
     overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
   }
 
   .tags-wrapper {
@@ -13,7 +20,6 @@
 
     .tags-container {
       padding: 5px;
-      background: #d1ecff;
       border-radius: 10px;
     }
   }

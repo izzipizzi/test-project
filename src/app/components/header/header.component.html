@@ -1,17 +1,17 @@
-<div class="header-wrapper">
+<mat-toolbar class="header-wrapper">
   <div class="header-container">
     <span class="header-title">{{title}}</span>
-    <nav class="header flex-row-center-sb">
+    <mat-toolbar-row class="header flex-row-center-sb">
       <div class="header-item-wrapper">
         <span class="header-item"  routerLink="/" >Home</span>
       </div>
       <div class="header-item-wrapper"  routerLink="/add-post" >
-        <img src="assets/svg/note.svg" alt="">
+        <img class="note-icon" src="assets/svg/note.svg" alt="">
         <span class="header-item">New Article</span>
       </div>
       <div class="header-item-wrapper">
         <span class="header-item">{{userName}}</span>
       </div>
-    </nav>
+    </mat-toolbar-row>
   </div>
-</div>
+</mat-toolbar>

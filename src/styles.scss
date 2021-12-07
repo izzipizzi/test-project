@@ -37,3 +37,6 @@ body {
   --header-height: 90px;
   --page-container-height: calc(100vh - var(--header-height))
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

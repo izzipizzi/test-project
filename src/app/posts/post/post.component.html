@@ -1,23 +1,29 @@
-<div class="post-wrapper">
+<mat-card class="post-wrapper">
   <div class="post-container">
-    <div class="post-author-container flex-row-center">
-      <div class="author-info-container flex-row-center">
-        <img class="avatar-md" src="assets/img/avatar.png" alt="User avatar">
-        <div class="">
-          <div class="author-info">{{authorInfo}}</div>
-          <div class="date-info">{{post?.date | date}}</div>
+    <mat-card-header class="post-author-container flex-row-center">
+      <div mat-card-title>
+        <div mat-card-avatar>
+          <img class="avatar-md" src="assets/img/avatar.png" alt="User avatar">
+        </div>
+        <div>
+          <mat-card-title class="author-info">{{authorInfo}}</mat-card-title>
+          <mat-card-subtitle class="date-info">{{post?.date | date}}</mat-card-subtitle>
         </div>
       </div>
-      <div class="likes-container flex-row-center" [ngClass]="postLikes">
-        <img src="assets/svg/heart.svg" alt="Heart">
-        <span class="likes-indicator">{{post?.likes}}</span>
-      </div>
-    </div>
-    <div class="post-info-container">
+        <button class="likes-container flex-row-center" mat-icon-button
+                color="{{postLikes}}"
+                aria-label="Like">
+          <mat-icon>favorite</mat-icon>
+          <span class="likes-indicator">{{post?.likes}}</span>
+        </button>
+    </mat-card-header>
+    <mat-card-content class="post-info-container">
       <span class="post-title">{{post?.title}}</span>
       <span class="post-text" [ngClass]="{'opened-text': isOpened}">{{post?.text}}</span>
-      <span class="post-btn" (click)="showMore()" *ngIf="!isOpened">Read more...</span>
-      <span class="post-btn" (click)="showLess()" *ngIf="isOpened">Read less...</span>
-    </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="primary" class="post-btn" (click)="showMore()" *ngIf="!isOpened">Read more...</button>
+      <button mat-button color="primary" class="post-btn" (click)="showLess()" *ngIf="isOpened">Read less...</button>
+    </mat-card-actions>
   </div>
-</div>
+</mat-card>

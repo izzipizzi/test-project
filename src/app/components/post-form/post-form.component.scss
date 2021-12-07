@@ -20,11 +20,6 @@
       .item-input {
         margin-top: 5px;
         border-radius: 5px;
-        padding: 6px 8px;
-
-        &.ng-dirty.ng-touched.ng-invalid:not(:focus) {
-          border: 2px solid red;
-        }
       }
 
       .error-msg {
