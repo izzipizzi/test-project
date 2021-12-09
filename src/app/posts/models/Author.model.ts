@@ -3,7 +3,7 @@ export class Author {
     public id: string,
     public name: string,
     public surname: string,
-    public avatar: string,
-    ) {
+    public avatar: string
+  ) {
   }
 }

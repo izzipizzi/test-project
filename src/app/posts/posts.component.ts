@@ -1,7 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {Post} from "./models/Post.model";
-import {PostsService} from "./services/posts.service";
-import {Author} from "./models/Author.model";
+import { Component, OnInit } from '@angular/core';
+import { Post } from './models/Post.model';
+import { PostsService } from './services/posts.service';
 
 @Component({
   selector: 'app-posts',
@@ -10,7 +9,7 @@ import {Author} from "./models/Author.model";
 })
 export class PostsComponent implements OnInit {
 
-  posts: Post[] = []
+  posts: Post[] = [];
 
   constructor(private readonly postsService: PostsService) {
   }
@@ -18,7 +17,7 @@ export class PostsComponent implements OnInit {
   ngOnInit(): void {
     this.postsService.getPosts().subscribe(posts => {
       this.posts = posts;
-    })
+    });
   }
 
 }
