@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {CreatePostPartialData} from "../posts/models/Post.model";
-import {PostsService} from "../posts/services/posts.service";
+import { Component, OnInit } from '@angular/core';
+import { CreatePostPartialData } from '../posts/models/Post.model';
+import { PostsService } from '../posts/services/posts.service';
 
 @Component({
   selector: 'app-add-post',
@@ -16,6 +16,6 @@ export class AddPostComponent implements OnInit {
   }
 
   addPost(postData: CreatePostPartialData) {
-    this.postsService.addPost(postData)
+    this.postsService.addPost(postData);
   }
 }
