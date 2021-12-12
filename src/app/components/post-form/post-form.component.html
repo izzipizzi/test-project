@@ -1,22 +1,22 @@
-<div class="add-post-form-wrapper">
-  <form class="add-post-form" [formGroup]="newPostForm" (ngSubmit)="submitForm()">
-    <mat-form-field appearance="outline" class="form-item">
-      <mat-label for="titleInputId" class="input-label">Post title</mat-label>
-      <input matInput type="text" formControlName="title" class="item-input"
-             id="titleInputId" placeholder="Please enter title"/>
-      <mat-error *ngIf="hasControlError('title')" class="error-msg">
+<div class='add-post-form-wrapper'>
+  <form class='add-post-form' [formGroup]='newPostForm' (ngSubmit)='submitForm()'>
+    <mat-form-field appearance='outline' class='form-item'>
+      <mat-label for='titleInputId' class='input-label'>Post title</mat-label>
+      <input matInput type='text' formControlName='title' class='item-input'
+             id='titleInputId' placeholder='Please enter title' />
+      <mat-error *ngIf="hasControlError('title')" class='error-msg'>
         {{titleError}}
       </mat-error>
     </mat-form-field>
-    <mat-form-field appearance="outline" class="form-item textarea-item">
-      <mat-label for="textInputId" class="input-label">Post text</mat-label>
-      <textarea matInput formControlName="text" placeholder="Please enter some post text"
-                id="textInputId" class="textarea-input item-input"
+    <mat-form-field appearance='outline' class='form-item textarea-item'>
+      <mat-label for='textInputId' class='input-label'>Post text</mat-label>
+      <textarea matInput formControlName='text' placeholder='Please enter some post text'
+                id='textInputId' class='textarea-input item-input'
       ></textarea>
-      <mat-error *ngIf="hasControlError('text')" class="error-msg">
+      <mat-error *ngIf="hasControlError('text')" class='error-msg'>
         {{textError}}
       </mat-error>
     </mat-form-field>
-    <button mat-raised-button color="primary" type="submit" [disabled]="!formValid" class="form-btn">Add post</button>
+    <button mat-raised-button color='primary' type='submit' [disabled]='!formValid' class='form-btn'>Add post</button>
   </form>
 </div>

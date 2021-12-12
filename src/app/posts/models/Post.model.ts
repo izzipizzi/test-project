@@ -1,4 +1,4 @@
-import {Author} from "./Author.model";
+import { Author } from './Author.model';
 
 export class Post {
   constructor(
@@ -7,14 +7,12 @@ export class Post {
     public title: string,
     public text: string,
     public likes: number,
-    public date: Date) {
+    public date: Date
+  ) {
   }
 }
 
-export class CreatePostPartialData {
-  constructor(
-    public title: string,
-    public text: string,
-  ) {
+export class CreatePostPartialData implements Partial<Post> {
+  constructor(public title: string, public text: string) {
   }
 }
