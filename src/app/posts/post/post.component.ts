@@ -25,7 +25,7 @@ export class PostComponent implements OnInit {
 
   get postLikes(): string {
     if (this.post?.likes) {
-      return this.post?.likes > 0 ? 'warn' : '';
+      return this.post.likes > 0 ? 'warn' : '';
     }
     return '';
   }
