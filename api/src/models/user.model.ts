@@ -1,23 +1,23 @@
 import { model, Schema } from 'mongoose';
+import { IUser } from 'shared';
+import bcrypt from 'bcrypt';
 
-export interface IUser {
-  _id: string;
-  name: string;
-  surname: string;
-  avatar: string;
+interface IUserDocument extends IUser, Document {
+  comparePassword: (password: string, next: (err: any | null, isMatch?: boolean) => void) => void;
 }
 
-export const UserSchema = new Schema<IUser>({
-  name: {
+export const UserSchema = new Schema<IUserDocument>({
+  nickname: {
     type: String,
     maxlength: 32,
     minlength: 2,
+    unique: true,
     required: true,
   },
-  surname: {
+  password: {
     type: String,
     maxlength: 32,
-    minlength: 2,
+    minlength: 6,
     required: true,
   },
   avatar: {
@@ -25,4 +25,24 @@ export const UserSchema = new Schema<IUser>({
   },
 });
 
-export const UserModel = model<IUser>('User', UserSchema);
+UserSchema.pre('save', function (next) {
+  if (!this.isModified('password')) return next();
+  const user = this;
+  bcrypt.genSalt(10, function (err, salt) {
+    if (err) return next(err);
+    bcrypt.hash(user.password, salt, function (err, hash) {
+      if (err) return next(err);
+      user.password = hash;
+      next();
+    });
+  });
+});
+
+UserSchema.methods.comparePassword = function (password, next) {
+  bcrypt.compare(password, this.password, function (err, isMatch) {
+    if (err) return next(err);
+    next(null, isMatch);
+  });
+};
+
+export const UserModel = model<IUserDocument>('User', UserSchema);

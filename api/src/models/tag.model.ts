@@ -1,9 +1,5 @@
 import { model, Schema } from 'mongoose';
-
-export interface ITag {
-  _id: string;
-  text: string;
-}
+import { ITag } from 'shared';
 
 export const TagSchema = new Schema<ITag>({
   text: {

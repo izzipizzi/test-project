@@ -1,19 +1,9 @@
 import { model, Schema } from 'mongoose';
-import { IUser, UserModel } from './user.model';
-import { CommentSchema, IComment } from './comment.model';
-import { ITag, TagSchema } from './tag.model';
-import { ILike } from './like.model';
-
-interface IPost {
-  _id: string;
-  author: IUser;
-  title: string;
-  text: string;
-  likes: ILike[];
-  dateCreated: Date;
-  comments: IComment[];
-  tags: ITag[];
-}
+import { UserModel } from './user.model';
+import { CommentSchema } from './comment.model';
+import { TagSchema } from './tag.model';
+import { IPost } from 'shared';
+import { LikeSchema } from './like.model';
 
 const PostSchema = new Schema<IPost>({
   title: {
@@ -29,7 +19,7 @@ const PostSchema = new Schema<IPost>({
     required: true,
   },
   likes: {
-    type: [CommentSchema],
+    type: [LikeSchema],
     default: [],
     required: true,
   },
