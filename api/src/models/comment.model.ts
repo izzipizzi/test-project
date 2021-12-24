@@ -1,12 +1,7 @@
 import { model, Schema } from 'mongoose';
-import { IUser, UserModel } from './user.model';
-
-export interface IComment {
-  _id: string;
-  author: IUser;
-  text: string;
-  dateCreated: Date;
-}
+import { UserModel } from './user.model';
+import { IComment } from 'shared';
+import { LikeSchema } from './like.model';
 
 export const CommentSchema = new Schema<IComment>({
   text: {
@@ -23,6 +18,11 @@ export const CommentSchema = new Schema<IComment>({
   dateCreated: {
     type: Date,
     default: new Date(),
+    required: true,
+  },
+  likes: {
+    type: [LikeSchema],
+    default: [],
     required: true,
   },
 });

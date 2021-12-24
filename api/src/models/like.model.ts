@@ -1,15 +1,16 @@
 import { model, Schema } from 'mongoose';
-import { IUser, UserModel } from './user.model';
-
-export interface ILike {
-  _id: string;
-  user: IUser;
-}
+import { UserModel } from './user.model';
+import { ILike } from 'shared';
 
 export const LikeSchema = new Schema<ILike>({
-  user: {
+  author: {
     type: Schema.Types.ObjectId,
     ref: UserModel,
+    required: true,
+  },
+  dateCreated: {
+    type: Date,
+    default: new Date(),
     required: true,
   },
 });
