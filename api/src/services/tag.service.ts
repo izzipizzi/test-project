@@ -1,10 +1,10 @@
 import { TagModel } from '../models/tag.model';
-import { ITag } from 'shared';
+import { Tag } from 'shared';
 
-export const createTag = async (text: string): Promise<ITag> => {
+export const createTag = async (text: string): Promise<Tag> => {
   return await new TagModel({ text: text }).save();
 };
 
-export const deleteTag = async (tagId: string): Promise<ITag> => {
+export const deleteTag = async (tagId: string): Promise<Tag> => {
   return TagModel.findByIdAndDelete(tagId);
 };

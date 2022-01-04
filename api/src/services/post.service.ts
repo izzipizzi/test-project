@@ -2,21 +2,21 @@ import express from 'express';
 import { PostModel } from '../models/post.model';
 import {
   defaultPostQuery,
-  IPost,
+  Post,
   PostCommentCreateData,
-  PostLikeCreateData,
-  PostsResponseData,
-  PostTagCreateData,
-  PostTagDeleteData,
+  PostLikeCreateDto,
+  PostsResponseDto,
+  PostTagCreateDto,
+  PostTagDeleteDto,
   Query,
 } from 'shared';
 import { createLike, deleteLike } from './like.service';
-import { PostLikeDeleteData } from '../../../shared';
+import { PostLikeDeleteDto } from '../../../shared';
 import { createTag, deleteTag } from './tag.service';
 import { FilterQuery } from 'mongoose';
 import { createComment } from './comment.service';
 
-const applyTagsFilter = (search: string): FilterQuery<IPost> => ({
+const applyTagsFilter = (search: string): FilterQuery<Post> => ({
   tags: { $elemMatch: { text: { $regex: search } } },
 });
 
@@ -54,7 +54,7 @@ export const getAllPosts = async (req: express.Request<{}, Query>, res: express.
     .sort([[sortBy, order]])
     .limit(limit);
 
-  const postsResponse: PostsResponseData = {
+  const postsResponse: PostsResponseDto = {
     totalCount: totalCount,
     page: page,
     posts: posts,
@@ -88,10 +88,12 @@ export const getPostsByUser = async (req: express.Request<{ userId: string }>, r
   res.status(200).json(posts);
 };
 
-export const createPost = async (req: express.Request<{}, {}, IPost>, res: express.Response) => {
+export const createPost = async (req: express.Request<{}, {}, Post>, res: express.Response) => {
   const post = new PostModel(req.body);
   await post.save();
-  res.status(201).json(post);
+  res.status(201).json({
+    message: 'Post created',
+  });
 };
 
 export const deletePost = async (req: express.Request<{ postId: string }>, res: express.Response) => {
@@ -101,7 +103,7 @@ export const deletePost = async (req: express.Request<{ postId: string }>, res: 
   });
 };
 
-export const setPostLike = async (req: express.Request<{}, {}, PostLikeCreateData>, res: express.Response) => {
+export const setPostLike = async (req: express.Request<{}, {}, PostLikeCreateDto>, res: express.Response) => {
   const post = await PostModel.findById(req.body.postId);
   const like = await createLike(req.body.userId);
   await post.likes.push(like);
@@ -111,7 +113,7 @@ export const setPostLike = async (req: express.Request<{}, {}, PostLikeCreateDat
   });
 };
 
-export const removePostLike = async (req: express.Request<{}, {}, PostLikeDeleteData>, res: express.Response) => {
+export const removePostLike = async (req: express.Request<{}, {}, PostLikeDeleteDto>, res: express.Response) => {
   const like = await deleteLike(req.body.likeId);
   await PostModel.findByIdAndUpdate(req.body.postId, {
     $pull: { likes: { _id: like._id } },
@@ -121,7 +123,7 @@ export const removePostLike = async (req: express.Request<{}, {}, PostLikeDelete
   });
 };
 
-export const createPostTag = async (req: express.Request<{}, {}, PostTagCreateData>, res: express.Response) => {
+export const createPostTag = async (req: express.Request<{}, {}, PostTagCreateDto>, res: express.Response) => {
   const post = await PostModel.findById(req.body.postId);
   const tag = await createTag(req.body.text);
   await post.tags.push(tag);
@@ -131,7 +133,7 @@ export const createPostTag = async (req: express.Request<{}, {}, PostTagCreateDa
   });
 };
 
-export const removePostTag = async (req: express.Request<{}, {}, PostTagDeleteData>, res: express.Response) => {
+export const removePostTag = async (req: express.Request<{}, {}, PostTagDeleteDto>, res: express.Response) => {
   const tag = await deleteTag(req.body.tagId);
   await PostModel.findByIdAndUpdate(req.body.postId, {
     $pull: { tags: { _id: tag._id } },

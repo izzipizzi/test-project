@@ -1,8 +1,8 @@
 import { model, Schema } from 'mongoose';
 import { UserModel } from './user.model';
-import { ILike } from 'shared';
+import { Like } from 'shared';
 
-export const LikeSchema = new Schema<ILike>({
+export const LikeSchema = new Schema<Like>({
   author: {
     type: Schema.Types.ObjectId,
     ref: UserModel,
@@ -11,8 +11,7 @@ export const LikeSchema = new Schema<ILike>({
   dateCreated: {
     type: Date,
     default: new Date(),
-    required: true,
   },
 });
 
-export const LikeModel = model<ILike>('Like', LikeSchema);
+export const LikeModel = model<Like>('Like', LikeSchema);

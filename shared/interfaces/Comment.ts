@@ -1,31 +1,31 @@
-import { IUser } from './User';
-import { ILike } from './Like';
+import { User } from './User';
+import { Like } from './Like';
 
-export interface CommentPartialData {
+export interface CommentPartialDto {
   text: string;
-  likes: ILike[];
+  likes: Like[];
 }
-export interface IComment extends CommentPartialData {
+export interface Comment extends CommentPartialDto {
   _id: string;
-  author: IUser;
+  author: User;
   dateCreated: Date;
 }
 
-export interface CommentCreateData extends CommentPartialData {
+export interface CommentCreateDto extends CommentPartialDto {
   authorId: string;
 }
 
 export interface PostCommentCreateData {
   postId: string;
-  comment: CommentCreateData;
+  comment: CommentCreateDto;
 }
 
-export interface CommentLikeCreateData {
+export interface CommentLikeCreateDto {
   commentId: string;
   userId: string;
 }
 
-export interface CommentLikeDeleteData {
+export interface CommentLikeDeleteDto {
   commentId: string;
   likeId: string;
 }

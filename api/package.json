@@ -2,7 +2,7 @@
   "name": "api",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "../dist/api/api/src/index.js",
   "scripts": {
     "build": "tsc",
     "start": "tsc & node .",
