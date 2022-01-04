@@ -1,20 +1,29 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { PostsComponent } from './posts/posts.component';
-import { AddPostComponent } from './add-post/add-post.component';
 
 const routes: Routes = [
   {
-    path: 'add-post', component: AddPostComponent
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'feed',
   },
   {
-    path: '', component: PostsComponent
-  }
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
+    path: '',
+    loadChildren: () => import('./application/application.module').then((m) => m.ApplicationModule),
+  },
+  {
+    path: '**',
+    pathMatch: 'full',
+    redirectTo: 'feed',
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule {
-}
+export class AppRoutingModule {}
