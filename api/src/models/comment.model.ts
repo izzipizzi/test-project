@@ -1,9 +1,9 @@
 import { model, Schema } from 'mongoose';
 import { UserModel } from './user.model';
-import { IComment } from 'shared';
+import { Comment } from 'shared';
 import { LikeSchema } from './like.model';
 
-export const CommentSchema = new Schema<IComment>({
+export const CommentSchema = new Schema<Comment>({
   text: {
     type: String,
     maxlength: 500,
@@ -18,13 +18,11 @@ export const CommentSchema = new Schema<IComment>({
   dateCreated: {
     type: Date,
     default: new Date(),
-    required: true,
   },
   likes: {
     type: [LikeSchema],
     default: [],
-    required: true,
   },
 });
 
-export const CommentModel = model<IComment>('Comment', CommentSchema);
+export const CommentModel = model<Comment>('Comment', CommentSchema);

@@ -1,8 +1,8 @@
 import { model, Schema } from 'mongoose';
-import { IUser } from 'shared';
+import { User } from 'shared';
 import bcrypt from 'bcrypt';
 
-interface IUserDocument extends IUser, Document {
+interface IUserDocument extends User, Document {
   comparePassword: (password: string, next: (err: any | null, isMatch?: boolean) => void) => void;
 }
 

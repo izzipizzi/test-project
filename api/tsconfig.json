@@ -6,8 +6,8 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "sourceMap": true,
-    "outDir": "../../api/dist",
-    "baseUrl": "../../api",
+    "outDir": "../dist/api",
+    "baseUrl": "../dist/api",
     "paths": {
       "*": ["node_modules/*"]
     }

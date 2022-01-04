@@ -1,7 +1,7 @@
 import { model, Schema } from 'mongoose';
-import { ITag } from 'shared';
+import { Tag } from 'shared';
 
-export const TagSchema = new Schema<ITag>({
+export const TagSchema = new Schema<Tag>({
   text: {
     type: String,
     maxlength: 40,
@@ -10,4 +10,4 @@ export const TagSchema = new Schema<ITag>({
   },
 });
 
-export const TagModel = model<ITag>('Tag', TagSchema);
+export const TagModel = model<Tag>('Tag', TagSchema);
