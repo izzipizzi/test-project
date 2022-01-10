@@ -1,8 +1,8 @@
 import express from 'express';
 import { UserModel } from '../models/user.model';
-import { IUser, UserLoginData, UserResponseData } from 'shared';
+import { User, UserLoginDto, UserResponseDto } from 'shared';
 
-export const signupUser = async (req: express.Request<{}, {}, IUser>, res: express.Response) => {
+export const signupUser = async (req: express.Request<{}, {}, User>, res: express.Response) => {
   const nickname = req.body.nickname;
   const existedUser = await UserModel.findOne({ nickname: nickname });
   if (!existedUser) {
@@ -16,13 +16,13 @@ export const signupUser = async (req: express.Request<{}, {}, IUser>, res: expre
   }
 };
 
-export const getUserById = async (req: express.Request<IUser>, res: express.Response) => {
-  const user = await UserModel.findById(req.params.id).select(['-password', '-__v']);
+export const getUserById = async (req: express.Request<User>, res: express.Response) => {
+  const user = await UserModel.findById(req.params._id).select(['-password', '-__v']);
   res.status(200).json(user);
 };
 
-export const loginUser = async (req: express.Request<{}, {}, UserLoginData>, res: express.Response) => {
-  const loginData: UserLoginData = req.body;
+export const loginUser = async (req: express.Request<{}, {}, UserLoginDto>, res: express.Response) => {
+  const loginData: UserLoginDto = req.body;
   const user = await UserModel.findOne({ nickname: loginData.nickname });
   if (user) {
     user.comparePassword(loginData.password, (err: Error, isMatch: boolean) => {
@@ -31,8 +31,8 @@ export const loginUser = async (req: express.Request<{}, {}, UserLoginData>, res
           message: 'Wrong Password',
         });
       } else {
-        const userResponseData: UserResponseData = {
-          id: user._id,
+        const userResponseData: UserResponseDto = {
+          _id: user._id,
           avatar: user.avatar,
           nickname: user.nickname,
         };

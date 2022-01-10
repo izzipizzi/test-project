@@ -2,18 +2,19 @@ import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal } from '@angular/cdk/portal';
 import { LoaderComponent } from '../components/loader/loader.component';
-import { Observable } from 'rxjs';
+import { SpinnerService } from '../services/spinner.service';
+import { Subscription } from 'rxjs';
 
 @Directive({
   selector: '[overlayLoading]',
 })
 export class OverlayLoadingDirective implements OnInit {
-  @Input('overlayLoading') isLoading!: Observable<boolean>;
   @Input('showBackdrop') showBackdrop: boolean = false;
 
+  subscription: Subscription = new Subscription();
   private overlayRef!: OverlayRef;
 
-  constructor(private host: ElementRef, private overlay: Overlay) {}
+  constructor(private host: ElementRef, private overlay: Overlay, private readonly spinnerService: SpinnerService) {}
 
   ngOnInit() {
     const positionStrategy = this.overlay
@@ -36,7 +37,7 @@ export class OverlayLoadingDirective implements OnInit {
 
     this.overlayRef = this.overlay.create(overlayConfig);
 
-    this.isLoading.subscribe((isLoading) => {
+    this.subscription = this.spinnerService.isLoading.subscribe((isLoading) => {
       if (isLoading) {
         this.overlayRef.attach(new ComponentPortal(LoaderComponent));
       } else {
@@ -45,6 +46,7 @@ export class OverlayLoadingDirective implements OnInit {
     });
   }
   ngOnDestroy() {
+    this.subscription.unsubscribe();
     this.overlayRef.detach();
   }
 }

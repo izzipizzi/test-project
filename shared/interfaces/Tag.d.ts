@@ -1,12 +1,12 @@
-export interface ITag {
+export interface Tag {
     _id?: string;
     text: string;
 }
-export interface PostTagCreateData {
+export interface PostTagCreateDto {
     postId: string;
     text: string;
 }
-export interface PostTagDeleteData {
+export interface PostTagDeleteDto {
     postId: string;
     tagId: string;
 }

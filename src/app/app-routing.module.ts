@@ -4,21 +4,21 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
+    redirectTo: 'app',
     pathMatch: 'full',
-    redirectTo: 'feed',
+  },
+  {
+    path: 'app',
+    loadChildren: () => import('./posts/posts.module').then((m) => m.PostsModule),
   },
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
-    path: '',
-    loadChildren: () => import('./application/application.module').then((m) => m.ApplicationModule),
-  },
-  {
     path: '**',
     pathMatch: 'full',
-    redirectTo: 'feed',
+    redirectTo: '',
   },
 ];
 

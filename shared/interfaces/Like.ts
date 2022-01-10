@@ -1,17 +1,17 @@
-import { IUser } from './User';
+import { User } from './User';
 
-export interface ILike {
+export interface Like {
   _id: string;
-  author: IUser;
+  author: User;
   dateCreated: Date;
 }
 
-export interface PostLikeCreateData {
+export interface PostLikeCreateDto {
   postId: string;
   userId: string;
 }
 
-export interface PostLikeDeleteData {
+export interface PostLikeDeleteDto {
   postId: string;
   likeId: string;
 }

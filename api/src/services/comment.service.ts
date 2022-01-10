@@ -1,9 +1,9 @@
-import { CommentCreateData, CommentLikeCreateData, CommentLikeDeleteData } from 'shared';
+import { CommentCreateDto, CommentLikeCreateDto, CommentLikeDeleteDto } from 'shared';
 import { CommentModel } from '../models/comment.model';
 import express from 'express';
 import { createLike, deleteLike } from './like.service';
 
-export const createComment = async (createCommentData: CommentCreateData) => {
+export const createComment = async (createCommentData: CommentCreateDto) => {
   return await new CommentModel({
     author: createCommentData.authorId,
     text: createCommentData.text,
@@ -11,7 +11,7 @@ export const createComment = async (createCommentData: CommentCreateData) => {
   }).save();
 };
 
-export const addCommentLike = async (req: express.Request<{}, {}, CommentLikeCreateData>, res: express.Response) => {
+export const addCommentLike = async (req: express.Request<{}, {}, CommentLikeCreateDto>, res: express.Response) => {
   const comment = await CommentModel.findById(req.body.commentId);
   const like = await createLike(req.body.userId);
   await comment.likes.push(like);
@@ -21,7 +21,7 @@ export const addCommentLike = async (req: express.Request<{}, {}, CommentLikeCre
   });
 };
 
-export const removeCommentLike = async (req: express.Request<{}, {}, CommentLikeDeleteData>, res: express.Response) => {
+export const removeCommentLike = async (req: express.Request<{}, {}, CommentLikeDeleteDto>, res: express.Response) => {
   const like = await deleteLike(req.body.likeId);
   await CommentModel.findByIdAndUpdate(req.body.commentId, {
     $pull: { likes: { _id: like._id } },

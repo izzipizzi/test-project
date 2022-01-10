@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IPost } from 'shared';
+import { Post } from 'shared';
 
 @Component({
   selector: 'app-post',
@@ -7,7 +7,7 @@ import { IPost } from 'shared';
   styleUrls: ['./post.component.scss'],
 })
 export class PostComponent implements OnInit {
-  @Input('post') post: IPost | null = null;
+  @Input('post') post: Post | null = null;
 
   @Output() onLikeClick = new EventEmitter<string>();
 
@@ -19,14 +19,11 @@ export class PostComponent implements OnInit {
 
   toggleOpened(event: MouseEvent): void {
     event.stopPropagation();
-    this.isOpened ? (this.isOpened = false) : (this.isOpened = true);
+    this.isOpened = !this.isOpened;
   }
 
   get postLikes(): string {
-    if (this.post?.likes.length) {
-      return this.post.likes.length > 0 ? 'warn' : '';
-    }
-    return '';
+    return this.post?.likes?.length ? 'warn' : '';
   }
 
   addPostLike(event: MouseEvent) {

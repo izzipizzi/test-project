@@ -3,10 +3,7 @@ import dotenv from 'dotenv';
 import { internalServerErrorHandler, notFoundErrorHandler } from './middleware/errorHandler';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
-
-import postRouter from './routers/post.router';
-import userRouter from './routers/user.router';
-import commentRouter from './routers/comment.router';
+import apiRouter from './routers/api.router';
 
 const app = express();
 
@@ -20,13 +17,11 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
   console.log(`He-he ....\nDB connected`);
 });
 
-app.use('/', express.static('dist/test-project'));
+app.use('/', express.static('../dist/test-project'));
 
-app.use('/api/posts', postRouter);
-app.use('/api/user', userRouter);
-app.use('/api/comment', commentRouter);
+app.use('/api', apiRouter);
 
-app.get('*', notFoundErrorHandler);
+app.all('*', notFoundErrorHandler);
 
 app.use(internalServerErrorHandler);
 
