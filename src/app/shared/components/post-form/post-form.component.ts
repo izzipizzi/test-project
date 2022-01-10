@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CreatePostData } from 'shared';
+import { CreatePostDto } from 'shared';
 
 @Component({
   selector: 'app-post-form',
@@ -26,7 +26,7 @@ export class PostFormComponent implements OnInit {
     ]),
   };
 
-  @Output() onSubmit = new EventEmitter<CreatePostData>();
+  @Output() onSubmit = new EventEmitter<CreatePostDto>();
 
   constructor(private readonly formBuilder: FormBuilder) {
     this.newPostForm = formBuilder.group({
@@ -47,7 +47,7 @@ export class PostFormComponent implements OnInit {
 
   submitForm(): void {
     if (this.formValid) {
-      const newPost: CreatePostData = {
+      const newPost: CreatePostDto = {
         text: this.newPostForm.get('text')?.value,
         title: this.newPostForm.get('title')?.value,
       };

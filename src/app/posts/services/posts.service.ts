@@ -1,22 +1,22 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { API } from '../../../shared/api-routes';
+import { API } from '../../shared/api-routes';
 import {
-  CreatePostData,
-  IPost,
-  PostLikeCreateData,
+  CreatePostDto,
+  Post,
+  PostLikeCreateDto,
   PostSortByEnum,
-  PostsResponseData,
+  PostsResponseDto,
   SortingOrder,
-  UserResponseData,
+  UserResponseDto,
 } from 'shared';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PostsService {
-  author: UserResponseData = {
+  author: UserResponseDto = {
     _id: '61c355cecf6126614e00f1fd',
     avatar: 'assets/img/avatar.png',
     nickname: '',
@@ -35,19 +35,19 @@ export class PostsService {
 
   constructor(private readonly httpClient: HttpClient) {}
 
-  getPosts(): Observable<PostsResponseData> {
-    return this.httpClient.get<PostsResponseData>(API.getAllPosts(), { params: this.postsQuery });
+  getPosts(): Observable<PostsResponseDto> {
+    return this.httpClient.get<PostsResponseDto>(API.getAllPosts(), { params: this.postsQuery });
   }
 
-  getPostById(id: string): Observable<IPost> {
-    return this.httpClient.get<IPost>(API.getPostById(id));
+  getPostById(id: string): Observable<Post> {
+    return this.httpClient.get<Post>(API.getPostById(id));
   }
 
-  likePost(postLikeCreateData: PostLikeCreateData): Observable<void> {
+  likePost(postLikeCreateData: PostLikeCreateDto): Observable<void> {
     return this.httpClient.post<void>(API.addPostLike(), postLikeCreateData);
   }
 
-  addPost(post: CreatePostData): Observable<any> {
+  addPost(post: CreatePostDto): Observable<any> {
     post.author = this.author._id;
     return this.httpClient.post(API.addPost(), post);
   }

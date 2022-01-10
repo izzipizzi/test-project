@@ -1,24 +1,24 @@
-import { UserResponseData } from './User';
-import { ILike } from './Like';
-import { IComment } from './Comment';
-import { ITag } from './Tag';
-export interface IPost extends PostPartialData {
+import { UserResponseDto } from './User';
+import { Like } from './Like';
+import { Comment } from './Comment';
+import { Tag } from './Tag';
+export interface Post extends PostPartialDto {
     _id: string;
-    likes: ILike[];
+    likes: Like[];
     dateCreated: Date;
-    comments: IComment[];
-    tags: ITag[];
-    author?: UserResponseData;
+    comments: Comment[];
+    tags: Tag[];
+    author?: UserResponseDto;
 }
-export interface PostsResponseData {
+export interface PostsResponseDto {
     totalCount: number;
     page: number;
-    posts: IPost[];
+    posts: Post[];
 }
-export interface CreatePostData extends PostPartialData {
+export interface CreatePostDto extends PostPartialDto {
     author?: string;
 }
-export interface PostPartialData {
+export interface PostPartialDto {
     title: string;
     text: string;
 }
