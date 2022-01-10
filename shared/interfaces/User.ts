@@ -1,11 +1,11 @@
-export interface UserLoginData {
+export interface UserLoginDto {
   password: string;
   nickname: string;
 }
 
-export interface IUser extends UserLoginData {
-  id: string;
+export interface User extends UserLoginDto {
+  _id: string;
   avatar: string;
 }
 
-export interface UserResponseData extends Omit<IUser, 'password'> {}
+export interface UserResponseDto extends Omit<User, 'password'> {}

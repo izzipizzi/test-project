@@ -2,10 +2,10 @@ import { model, Schema } from 'mongoose';
 import { UserModel } from './user.model';
 import { CommentSchema } from './comment.model';
 import { TagSchema } from './tag.model';
-import { IPost } from 'shared';
+import { Post } from 'shared';
 import { LikeSchema } from './like.model';
 
-const PostSchema = new Schema<IPost>({
+const PostSchema = new Schema<Post>({
   title: {
     type: String,
     maxlength: 60,
@@ -21,12 +21,10 @@ const PostSchema = new Schema<IPost>({
   likes: {
     type: [LikeSchema],
     default: [],
-    required: true,
   },
   dateCreated: {
     type: Date,
     default: new Date(),
-    required: true,
   },
   author: {
     type: Schema.Types.ObjectId,
@@ -36,13 +34,11 @@ const PostSchema = new Schema<IPost>({
   comments: {
     type: [CommentSchema],
     default: [],
-    required: true,
   },
   tags: {
     type: [TagSchema],
     default: [],
-    required: true,
   },
 });
 
-export const PostModel = model<IPost>('Post', PostSchema);
+export const PostModel = model<Post>('Post', PostSchema);
