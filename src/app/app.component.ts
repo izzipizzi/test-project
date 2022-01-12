@@ -10,8 +10,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class AppComponent {
   title = 'test-project';
   constructor(private toastService: ToastService, private snackBar: MatSnackBar) {
-    this.toastService.notification$.subscribe((message) => {
-      this.snackBar.open(message);
+    this.toastService.notification$.subscribe((Toast) => {
+      this.snackBar.open(Toast.message, '', { panelClass: Toast.type });
     });
   }
 }

@@ -1,22 +1,32 @@
-<div class='add-post-form-wrapper'>
-  <form class='add-post-form' [formGroup]='newPostForm' (ngSubmit)='submitForm()'>
-    <mat-form-field appearance='outline' class='form-item'>
-      <mat-label for='titleInputId' class='input-label'>Post title</mat-label>
-      <input matInput type='text' formControlName='title' class='item-input'
-             id='titleInputId' placeholder='Please enter title' />
-      <mat-error class='error-msg'>
-        {{titleError}}
+<div class="form__wrapper">
+  <form class="form" [formGroup]="newPostForm" (ngSubmit)="submitForm()">
+    <mat-form-field appearance="outline" class="form__item">
+      <mat-label for="titleInputId" class="input__label">Post title</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="title"
+        class="input__item"
+        id="titleInputId"
+        placeholder="Please enter title"
+      />
+      <mat-error class="msg__error">
+        {{ titleError }}
       </mat-error>
     </mat-form-field>
-    <mat-form-field appearance='outline' class='form-item textarea-item'>
-      <mat-label for='textInputId' class='input-label'>Post text</mat-label>
-      <textarea matInput formControlName='text' placeholder='Please enter some post text'
-                id='textInputId' class='textarea-input item-input'
+    <mat-form-field appearance="outline" class="form__item">
+      <mat-label for="textInputId" class="input__label">Post text</mat-label>
+      <textarea
+        matInput
+        formControlName="text"
+        placeholder="Please enter some post text"
+        id="textInputId"
+        class="input__item__textarea"
       ></textarea>
-      <mat-error class='error-msg'>
-        {{textError}}
+      <mat-error class="msg__error">
+        {{ textError }}
       </mat-error>
     </mat-form-field>
-    <button mat-raised-button color='primary' type='submit' [disabled]='!formValid' class='form-btn'>Add post</button>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!formValid" class="form__btn">Add post</button>
   </form>
 </div>

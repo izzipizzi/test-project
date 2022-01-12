@@ -10,6 +10,7 @@ import {
   PostsResponseDto,
   SortingOrder,
   UserResponseDto,
+  UserRole,
 } from 'shared';
 
 @Injectable({
@@ -20,6 +21,8 @@ export class PostsService {
     _id: '61c355cecf6126614e00f1fd',
     avatar: 'assets/img/avatar.png',
     nickname: '',
+    role: UserRole.REGULAR,
+    token: '',
   };
 
   postsQuery = new HttpParams({

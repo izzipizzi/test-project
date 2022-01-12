@@ -1,1 +1,10 @@
-<h1>loginn</h1>
+<div class="auth">
+  <div class="auth__header">
+    <span class="header__text">Login</span>
+  </div>
+  <app-auth-form (onSubmit)="signInUser($event)"></app-auth-form>
+  <div class="auth__footer">
+    <span class="footer__text">New on blog?</span>
+    <span class="footer__link" [routerLink]="'/auth/signup'">Sign up</span>
+  </div>
+</div>
