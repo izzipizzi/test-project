@@ -13,7 +13,7 @@ export class PostFormComponent implements OnInit {
   private readonly minTextLength: number = 3;
   private readonly maxTextLength: number = 7000;
 
-  private readonly validationErrors = {
+  readonly validationErrors = {
     title: new Map<string, string>([
       ['required', 'Please enter post title.'],
       ['minlength', `The title must be longer than ${this.minTextLength} characters.`],

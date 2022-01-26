@@ -11,7 +11,7 @@ export class AuthFormComponent implements OnInit {
   @Input() isSignUp: boolean = false;
   authForm: FormGroup;
 
-  private readonly validationErrors = {
+  readonly validationErrors = {
     nickname: new Map<string, string>([
       ['required', 'Please enter nickname.'],
       ['minlength', `The nickname must be longer than ${nicknameValidation.minLength} characters.`],
@@ -19,13 +19,13 @@ export class AuthFormComponent implements OnInit {
     ]),
     password: new Map<string, string>([
       ['required', 'Please enter password.'],
-      ['minLength', `The password must be longer than ${passwordValidation.minLength} characters.`],
+      ['minlength', `The password must be longer than ${passwordValidation.minLength} characters.`],
       ['maxlength', `The password must be no longer than ${passwordValidation.maxlength} characters.`],
       ['pattern', `The password must contain at least 1 uppercase, 1 lowercase and 1 number`],
     ]),
     confirmPassword: new Map<string, string>([
       ['equal', 'This password does not match that entered in the password field, please try again. '],
-      ['minLength', `The password must be longer than ${passwordValidation.minLength} characters.`],
+      ['minlength', `The password must be longer than ${passwordValidation.minLength} characters.`],
       ['maxlength', `The password must be no longer than ${passwordValidation.maxlength} characters.`],
       ['pattern', `The password must contain at least 1 uppercase, 1 lowercase and 1 number`],
     ]),
