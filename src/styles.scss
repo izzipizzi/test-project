@@ -1,1 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: var(--primary);
+
+  .page-wrapper {
+    box-sizing: border-box;
+    height: var(--page-container-height);
+    padding: 20px 40px;
+    overflow: hidden;
+  }
+
+  .avatar-md {
+    border-radius: 50%;
+    height: 32px;
+    width: 32px;
+  }
+
+  .flex-row-center-sb {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .flex-row-center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+:root {
+  --header-height: 90px;
+  --page-container-height: calc(100vh - var(--header-height))
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
