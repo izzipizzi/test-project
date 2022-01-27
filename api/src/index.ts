@@ -4,6 +4,7 @@ import { internalServerErrorHandler, notFoundErrorHandler } from './middleware/e
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 import apiRouter from './routers/api.router';
+import { errors } from 'celebrate';
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use('/api', apiRouter);
 
 app.all('*', notFoundErrorHandler);
 
+app.use(errors());
 app.use(internalServerErrorHandler);
 
 app.listen(PORT, () => console.log(`Running on PORT ${PORT}`));

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostsService } from '../services/posts.service';
 import { Router } from '@angular/router';
 import { CreatePostDto } from 'shared';
-import { ToastService } from '../../shared/services/toast.service';
+import { ToastService, ToastType } from '../../shared/services/toast.service';
 import { BehaviorSubject } from 'rxjs';
 import { SpinnerService } from '../../shared/services/spinner.service';
 
@@ -25,10 +25,16 @@ export class AddPostComponent implements OnInit {
 
   addPost(postData: CreatePostDto) {
     this.spinnerService.show();
-    this.postsService.addPost(postData).subscribe((data) => {
-      this.spinnerService.hide();
-      this.toastService.notification$.next(data.message);
-      this.router.navigate(['/']);
-    });
+    this.postsService.addPost(postData).subscribe(
+      (data) => {
+        this.spinnerService.hide();
+        this.toastService.notification$.next({ message: data.message, type: ToastType.SUCCESS });
+        this.router.navigate(['/']);
+      },
+      (error) => {
+        this.spinnerService.hide();
+        this.toastService.notification$.next({ message: error, type: ToastType.ERROR });
+      }
+    );
   }
 }

@@ -1,0 +1,51 @@
+<div class="form__wrapper">
+  <form class="form" [formGroup]="authForm" (ngSubmit)="submitForm()">
+    <mat-form-field appearance="outline" class="form__item">
+      <mat-label for="nicknameInputId" class="input__label">Nickname</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="nickname"
+        class="input__item"
+        id="nicknameInputId"
+        placeholder="Please enter nickname"
+      />
+      <mat-error class="msg__error">
+        {{ nicknameError }}
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="form__item">
+      <mat-label for="passwordInputId" class="input__label">Password</mat-label>
+      <input
+        matInput
+        formControlName="password"
+        placeholder="Please enter password"
+        id="passwordInputId"
+        class="input__item"
+        type="password"
+      />
+      <mat-error class="msg__error">
+        {{ passwordError }}
+      </mat-error>
+    </mat-form-field>
+    <ng-template [ngIf]="isSignUp">
+      <mat-form-field appearance="outline" class="form__item">
+        <mat-label for="confirmPasswordInputId" class="input__label">Confirm Password</mat-label>
+        <input
+          matInput
+          formControlName="confirmPassword"
+          placeholder="Please enter password"
+          id="confirmPasswordInputId"
+          class="input__item"
+          type="password"
+        />
+        <mat-error class="msg__error">
+          {{ confirmPasswordError }}
+        </mat-error>
+      </mat-form-field>
+    </ng-template>
+    <button mat-raised-button color="primary" type="submit" [disabled]="!formValid" class="form__btn">
+      {{ isSignUp ? 'Signup' : 'Login' }}
+    </button>
+  </form>
+</div>

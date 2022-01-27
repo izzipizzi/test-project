@@ -1,5 +1,5 @@
 import { model, Schema } from 'mongoose';
-import { User } from 'shared';
+import { nicknameValidation, passwordValidation, User, UserRole } from 'shared';
 import bcrypt from 'bcrypt';
 
 interface IUserDocument extends User, Document {
@@ -9,19 +9,24 @@ interface IUserDocument extends User, Document {
 export const UserSchema = new Schema<IUserDocument>({
   nickname: {
     type: String,
-    maxlength: 32,
-    minlength: 2,
+    maxlength: nicknameValidation.maxlength,
+    minlength: nicknameValidation.minLength,
     unique: true,
     required: true,
   },
   password: {
     type: String,
-    maxlength: 32,
-    minlength: 6,
+    maxlength: passwordValidation.maxlength,
+    minlength: passwordValidation.minLength,
     required: true,
   },
   avatar: {
     type: String,
+  },
+  role: {
+    type: String,
+    enum: Object.keys(UserRole),
+    default: UserRole.REGULAR,
   },
 });
 

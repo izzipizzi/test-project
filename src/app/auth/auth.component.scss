@@ -1,0 +1,25 @@
+.auth {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &__header {
+    margin-bottom: 30px;
+    display: flex;
+    width: 500px;
+    .header__text {
+      font-size: 2.6rem;
+    }
+  }
+  &__footer {
+    margin-top: 20px;
+    font-size: 1.2rem;
+
+    .footer__link {
+      margin-left: 10px;
+      color: #537cff;
+      cursor: pointer;
+    }
+  }
+}

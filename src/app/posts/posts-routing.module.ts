@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddPostComponent } from './add-post/add-post.component';
 import { PostsComponent } from './posts.component';
 import { PostInfoComponent } from './post-info/post-info.component';
+import { AuthGuard } from '../shared/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -12,6 +13,7 @@ const routes: Routes = [
   {
     path: 'add-post',
     component: AddPostComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: ':postId',
