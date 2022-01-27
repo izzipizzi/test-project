@@ -3,12 +3,14 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node index.js",
     "build": "ng build",
+    "build:prod": "ng build --prod",
     "dev": "cd api && ts-node-dev src/index.ts",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "heroku-postbuild": "cd shared && tsc index.ts -d && cd .. && ng build && cd api && npm i && tsc"
+    "build:shared": "cd shared && tsc index.ts -d",
+    "heroku-postbuild": "npm run build:shared && cd .. && npm run build:prod && cd api && npm i && npm run build"
   },
   "private": true,
   "dependencies": {
