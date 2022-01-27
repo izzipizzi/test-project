@@ -8,7 +8,7 @@
     "dev": "cd api && ts-node-dev src/index.ts",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "heroku-postbuild": "ng build &&  cd shared && tsc index.ts -d && cd .. && cd api && tsc"
+    "heroku-postbuild": "cd shared && tsc index.ts -d && cd .. && ng build && cd api && tsc"
   },
   "private": true,
   "dependencies": {
