@@ -9,9 +9,9 @@
     "dev": "cd api && ts-node-dev src/index.ts",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build:shared": "cd shared && tsc index.ts -d",
+    "build:shared": "cd shared && tsc index.ts -d && cd ..",
     "heroku-prebuild":"cd api && npm i && cd ..",
-    "heroku-postbuild": "npm run build:shared && cd .. && npm run build:prod && cd api && npm run build"
+    "heroku-postbuild": "npm run build:shared  && npm run build:prod && cd api && npm run build"
   },
   "private": true,
   "dependencies": {
