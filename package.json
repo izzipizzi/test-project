@@ -10,7 +10,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "build:shared": "cd shared && tsc index.ts -d",
-    "heroku-postbuild": "npm run build:shared && cd .. && npm run build:prod && cd api && npm i && npm run build"
+    "heroku-prebuild":"npm run build:shared && cd .. && cd api && npm i ",
+    "heroku-postbuild": "npm run build:prod && cd api && npm run build"
   },
   "private": true,
   "dependencies": {
