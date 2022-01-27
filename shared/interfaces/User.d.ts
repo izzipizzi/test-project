@@ -12,4 +12,5 @@ export interface User extends UserLoginDto {
     role: UserRole;
 }
 export interface UserResponseDto extends Omit<User, 'password'> {
+    token: string;
 }
