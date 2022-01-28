@@ -5,7 +5,6 @@
   "main": "./dist/index.js",
   "scripts": {
     "start": "node dist/index.js",
-    "postinstall": "tsc",
     "build": "tsc -p .",
     "start-windows:dev": "cd ./dist && set NODE_ENV=development && node index.js",
     "dev": "ts-node-dev src/index.ts NODE_ENV=development"
