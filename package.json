@@ -11,7 +11,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test --browsers=ChromeHeadless --watch=false --code-coverage",
     "build:shared": "cd shared && tsc index.ts -d && cd ..",
-    "heroku-prebuild": "cd api && npm install && tsc -p . && cd ..",
+    "heroku-prebuild": "cd api && npm install  && cd ..",
     "heroku-postbuild": "npm run build:shared  && npm run build:prod"
   },
   "private": true,
