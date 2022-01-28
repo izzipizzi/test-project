@@ -4,11 +4,10 @@
   "description": "",
   "main": "../dist/index.js",
   "scripts": {
+    "start": "node dist/index.js",
+    "postinstall": "tsc",
     "build": "tsc -p .",
     "start-windows:dev": "cd ./dist && set NODE_ENV=development && node index.js",
-    "start-windows:prod": "set NODE_ENV=production&& cd ./dist && node index.js",
-    "start-linux:dev": "cd ./dist && NODE_ENV=development node index.js ",
-    "start-linux:prod": "cd ./dist && NODE_ENV=production node index.js ",
     "dev": "ts-node-dev src/index.ts NODE_ENV=production"
   },
   "author": "",

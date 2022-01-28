@@ -4,14 +4,14 @@
     "esModuleInterop": true,
     "target": "es6",
     "lib": ["es6"],
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "moduleResolution": "node",
     "outDir": "./dist",
     "baseUrl": "./",
     "paths": {
       "*": ["node_modules/*"]
     },
-    "typeRoots": ["./src/types"]
+    "typeRoots": ["./src/types", "./node_modules/@types/"]
   },
-  "include": ["src/**/*", ".env"],
+  "include": ["src/**/*", ".env"]
 }
