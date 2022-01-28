@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node api/dist/index.js",
+    "start": "node dist/index.js",
     "start:dev": "ng serve",
     "build": "ng build",
     "build:prod": "ng build --prod",
