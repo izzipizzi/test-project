@@ -2,16 +2,19 @@
   "name": "api",
   "version": "1.0.0",
   "description": "",
-  "main": "../dist/index.js",
+  "main": "./dist/index.js",
   "scripts": {
     "start": "node dist/index.js",
     "postinstall": "tsc",
     "build": "tsc -p .",
     "start-windows:dev": "cd ./dist && set NODE_ENV=development && node index.js",
-    "dev": "ts-node-dev src/index.ts NODE_ENV=production"
+    "dev": "ts-node-dev src/index.ts NODE_ENV=development"
   },
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": "16.x"
+  },
   "dependencies": {
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.1",
