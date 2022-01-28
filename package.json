@@ -5,10 +5,13 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --prod",
     "dev": "cd api && ts-node-dev src/index.ts",
     "watch": "ng build --watch --configuration development",
-    "build:shared": "cd shared && tsc index.ts -d",
-    "test": "ng test --browsers=ChromeHeadless --watch=false --code-coverage"
+    "test": "ng test --browsers=ChromeHeadless --watch=false --code-coverage",
+    "build:shared": "cd shared && tsc index.ts -d && cd ..",
+    "heroku-prebuild": "cd api && npm i && cd ..",
+    "heroku-postbuild": "npm run build:shared  && npm run build:prod && cd api && npm run build"
   },
   "private": true,
   "dependencies": {
@@ -40,6 +43,7 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "prettier": "^2.5.1",
-    "typescript": "~4.4.3"
+    "typescript": "~4.4.3",
+    "webpack-cli": "^4.9.2"
   }
 }

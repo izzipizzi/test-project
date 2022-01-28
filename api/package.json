@@ -2,11 +2,14 @@
   "name": "api",
   "version": "1.0.0",
   "description": "",
-  "main": "../dist/api/api/src/index.js",
+  "main": "../dist/index.js",
   "scripts": {
-    "build": "tsc",
-    "start": "tsc & node .",
-    "dev": "ts-node-dev src/index.ts"
+    "build": "tsc -p .",
+    "start-windows:dev": "cd ./dist && set NODE_ENV=development && node index.js",
+    "start-windows:prod": "set NODE_ENV=production&& cd ./dist && node index.js",
+    "start-linux:dev": "cd ./dist && NODE_ENV=development node index.js ",
+    "start-linux:prod": "cd ./dist && NODE_ENV=production node index.js ",
+    "dev": "ts-node-dev src/index.ts NODE_ENV=production"
   },
   "author": "",
   "license": "ISC",
@@ -17,15 +20,17 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "express-http-proxy": "^1.6.3",
     "joi": "^17.5.0",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^6.1.2",
+    "mongoose": "^6.1.8",
     "shared": "file:../shared",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
     "@types/express": "^4.17.13",
+    "@types/express-http-proxy": "^1.6.3",
     "@types/jsonwebtoken": "^8.5.6",
     "@types/mongoose": "^5.11.97",
     "@types/node": "^16.11.12",

@@ -3,15 +3,15 @@
     "module": "commonjs",
     "esModuleInterop": true,
     "target": "es6",
+    "lib": ["es6"],
     "noImplicitAny": true,
     "moduleResolution": "node",
-    "sourceMap": true,
-    "outDir": "../dist/api",
-    "baseUrl": "../dist/api",
+    "outDir": "./dist",
+    "baseUrl": "./",
     "paths": {
       "*": ["node_modules/*"]
     },
     "typeRoots": ["./src/types"]
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", ".env"],
 }
