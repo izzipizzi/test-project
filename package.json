@@ -11,7 +11,7 @@
     "test": "ng test --browsers=ChromeHeadless --watch=false --code-coverage",
     "build:shared": "cd shared && tsc index.ts -d && cd ..",
     "heroku-prebuild": "cd api && npm install && cd ..",
-    "heroku-postbuild": "npm run build:shared  && npm run build:prod && cd api && npm run build"
+    "heroku-postbuild": "npm run build:shared  && npm run build:prod && cd api"
   },
   "private": true,
   "dependencies": {
