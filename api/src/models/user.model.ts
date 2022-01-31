@@ -1,8 +1,8 @@
-import { model, Schema } from 'mongoose';
+import { Document, model, Schema } from 'mongoose';
 import { nicknameValidation, passwordValidation, User, UserRole } from 'shared';
 import bcrypt from 'bcrypt';
 
-interface IUserDocument extends User, Document {
+export interface IUserDocument extends User {
   comparePassword: (password: string, next: (err: any | null, isMatch?: boolean) => void) => void;
 }
 
@@ -43,7 +43,7 @@ UserSchema.pre('save', function (next) {
   });
 });
 
-UserSchema.methods.comparePassword = function (password, next) {
+UserSchema.methods.comparePassword = function (password: string, next: (err: any | null, isMatch?: boolean) => void) {
   bcrypt.compare(password, this.password, function (err, isMatch) {
     if (err) return next(err);
     next(null, isMatch);
