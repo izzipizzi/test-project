@@ -6,4 +6,7 @@ export const API = {
   getPostById: (postId: string): string => `${API_URL}/posts/${postId}`,
   getPostsByUser: (userId: string): string => `${API_URL}/posts/user/${userId}`,
   addPostLike: (): string => `${API_URL}/posts/like`,
+
+  signIn: (): string => `${API_URL}/user/signin`,
+  signUp: (): string => `${API_URL}/user/signup`,
 };

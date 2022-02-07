@@ -10,5 +10,5 @@ export const internalServerErrorHandler = (
   res: express.Response,
   next: express.NextFunction
 ) => {
-  res.status(500).send({ message: 'Internal server error' });
+  res.status(500).send({ message: 'Internal server error', req: req.body, err: err });
 };

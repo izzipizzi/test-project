@@ -21,7 +21,7 @@ export class PostFormComponent implements OnInit {
     ]),
     text: new Map<string, string>([
       ['required', 'Please enter some text.'],
-      ['minLength', `The text must be longer than ${this.minTextLength} characters.`],
+      ['minlength', `The text must be longer than ${this.minTextLength} characters.`],
       ['maxlength', `The text must be no longer than ${this.maxTitleLength} characters.`],
     ]),
   };
@@ -75,7 +75,7 @@ export class PostFormComponent implements OnInit {
     const formControl = this.newPostForm.get('text');
     for (let errorsKey in formControl?.errors) {
       if (this.validationErrors?.text.has(errorsKey)) {
-        return <string>this.validationErrors?.title?.get(errorsKey);
+        return <string>this.validationErrors?.text?.get(errorsKey);
       }
     }
 

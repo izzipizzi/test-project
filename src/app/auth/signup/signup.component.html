@@ -1,1 +1,10 @@
-<p>signup works!</p>
+<div class="auth">
+  <div class="auth__header">
+    <span class="header__text">Sign up</span>
+  </div>
+  <app-auth-form (onSubmit)="signUpUser($event)" [isSignUp]="true"></app-auth-form>
+  <div class="auth__footer">
+    <span class="footer__text">Already have account?</span>
+    <span class="footer__link" [routerLink]="'/auth/login'">Sign in</span>
+  </div>
+</div>
